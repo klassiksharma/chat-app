@@ -12,6 +12,10 @@
   border-color: #009688;
 }
 
+.user-container > button.active{
+  background: firebrick;
+}
+
 .user-container > label{
   padding-top: 12px;
 }

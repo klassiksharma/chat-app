@@ -32,7 +32,10 @@ io.sockets.on('connection', function(socket) {
         console.log("Clients data=>", clients)
         if (clients[data.username]){
             console.log("to => " + data.username)
-            io.sockets.connected[clients[data.username].socket].emit("add-message", data);
+            console.log("Connected =>" + Object.keys(io.sockets.connected))
+            var socId = clients[data.username].socket
+            console.log("Soc =>" + socId)
+            io.sockets.connected[socId].emit("add-message", data);
             if(clients[data.from]){
                 console.log("from => " + data.from)
                 io.sockets.connected[clients[data.from].socket].emit("add-message", data);

@@ -43,7 +43,6 @@ export class ChatBox{
     console.log("ngonoiniyt")
     this.chatService
       .getMessages()
-      .distinctUntilChanged()
       /*.distinctUntilChanged()
        .filter((message) => message.trim().length > 0)
        .throttleTime(1000)
