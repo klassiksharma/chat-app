@@ -1,0 +1,20 @@
+<div class="col-md-12 user-container">
+  <label class="pull-left">Select LoggedIn User:</label>
+  <button class="btn btn-sm" (click)="setLoggedIn('Ajit')">Ajit</button>
+  <button class="btn btn-sm" (click)="setLoggedIn('Raje')">Raje</button>
+  <button class="btn btn-sm " (click)="setLoggedIn('saumya')">Saumya</button>
+  <button class="btn btn-sm " (click)="setLoggedIn('Kush')">Kush</button>
+</div>
+<div class="col-md-12">
+  <div class="row">
+    <div class="col-md-4">
+      <user-list></user-list>
+    </div>
+
+    <div class="col-md-8">
+      <chat-box></chat-box>
+    </div>
+  </div>
+</div>
+
+

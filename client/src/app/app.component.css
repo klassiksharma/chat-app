@@ -1,0 +1,17 @@
+.user-container{
+  text-align: center;
+  margin-bottom: 20px;
+  background: cadetblue;
+  color: #ffffff;
+}
+
+.user-container > button{
+  margin: 10px;
+  color: #ffffff;
+  background-color: #009688;
+  border-color: #009688;
+}
+
+.user-container > label{
+  padding-top: 12px;
+}

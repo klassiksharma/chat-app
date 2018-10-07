@@ -1,0 +1,85 @@
+<!--<div class="col-md-12">
+  <div class="chat-container">
+    <div class="chat-item" *ngFor="let item of chatMessages">
+      {{item}}
+    </div>
+  </div>
+</div>-->
+
+
+<div class="col-sm-12 conversation">
+  <!-- Heading -->
+  <div class="row heading">
+    <div class="col-sm-2 col-xs-3 heading-avatar">
+      <div class="heading-avatar-icon">
+        <img src="http://shurl.esy.es/y">
+      </div>
+    </div>
+    <div class="col-sm-8 col-xs-7 heading-name">
+      <a class="heading-name-meta">{{userService.getCurrentUser()}}
+      </a>
+      <span class="heading-online">Online</span>
+    </div>
+    <div class="col-sm-2 col-xs-1  heading-dot pull-right">
+      <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+    </div>
+  </div>
+  <!-- Heading End -->
+
+  <!-- Message Box -->
+  <div class="row message">
+
+    <!--<div class="row message-previous">
+      <div class="col-sm-12 previous">
+        <a>
+          Show Previous Message!
+        </a>
+      </div>
+    </div>-->
+
+    <div class="row message-body" *ngFor="let item of messages">
+      <div class="col-sm-12" [class.message-main-receiver]="item.from != userService.getLoggedInUser()" [class.message-main-sender]="item.from != userService.getCurrentUser()">
+        <div [class.receiver]="item.from != userService.getLoggedInUser()" [class.sender]="item.from != userService.getCurrentUser()">
+          <div class="message-text">
+            {{item.message}}
+          </div>
+          <span class="message-time pull-right">
+          {{item.timestamp}}
+        </span>
+        </div>
+      </div>
+    </div>
+
+    <!--<div class="row message-body">
+      <div class="col-sm-12 message-main-sender">
+        <div class="sender">
+          <div class="message-text">
+            item
+          </div>
+          <span class="message-time pull-right">
+          Sun
+        </span>
+        </div>
+      </div>
+    </div>-->
+  </div>
+  <!-- Message Box End -->
+
+  <!-- Reply Box -->
+  <div class="row reply">
+    <div class="col-sm-1 col-xs-1 reply-emojis">
+      <i class="fa fa-smile-o fa-2x"></i>
+    </div>
+    <div class="col-sm-9 col-xs-9 reply-main">
+      <textarea class="form-control" rows="1" id="comment" [(ngModel)]="message.string" (keydown.enter)="sendMessage()"></textarea>
+    </div>
+    <div class="col-sm-1 col-xs-1 reply-recording">
+      <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
+    </div>
+    <div class="col-sm-1 col-xs-1 reply-send">
+      <i class="fa fa-send fa-2x" aria-hidden="true" (click)="sendMessage()"></i>
+    </div>
+  </div>
+  <!-- Reply Box End -->
+</div>
+
