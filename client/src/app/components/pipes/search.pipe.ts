@@ -16,8 +16,10 @@ export class SearchPipe implements PipeTransform {
 })
 export class MessagePipe implements PipeTransform {
 
-  transform(value: any, from?: any, to?: any): any {
-    return value.filter(val=> val.from == from)
+  transform(value: any, from?: any): any {
+    console.log("pipe", from)
+    console.log("pipe value", value)
+    return value.filter(val => val.from == from || val.to == from)
   }
 
 }

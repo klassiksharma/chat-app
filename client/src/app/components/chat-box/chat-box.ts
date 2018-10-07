@@ -3,6 +3,7 @@ import {ChatServiceService} from "../../chat-service.service";
 import * as moment from "moment"
 import {UserService} from "../../user.service";
 import 'rxjs/add/operator/distinctUntilChanged';
+import {MessagePipe} from "../pipes/search.pipe";
 
 @Component({
   selector: 'chat-box',
@@ -10,9 +11,9 @@ import 'rxjs/add/operator/distinctUntilChanged';
   styleUrls: ['./chat-box.css']
 })
 
-export class ChatBox{
+export class ChatBox {
 
-  constructor(private chatService: ChatServiceService, private userService: UserService){}
+  constructor(private chatService: ChatServiceService, private userService: UserService, private mpipe: MessagePipe){}
 
 
   message:any = {
@@ -21,13 +22,6 @@ export class ChatBox{
     'from': ''
   };
   messages:any = [];
-
-
-  chatMessages:any = [
-    "Hi",
-    "How are you?",
-    "Good Morning"
-  ]
 
   sendMessage() {
     this.message.username = this.userService.getCurrentUser();
@@ -40,7 +34,6 @@ export class ChatBox{
   }
 
   ngOnInit() {
-    console.log("ngonoiniyt")
     this.chatService
       .getMessages()
       /*.distinctUntilChanged()
@@ -63,6 +56,7 @@ export class ChatBox{
         console.log("LoggedInUser", this.userService.getLoggedInUser(), "from", message.from);
         console.log("currentUser", this.userService.getCurrentUser(), "to=>", message.username);
         console.log(this.messages, "Messages All")
+        //this.mpipe.transform(this.messages, this.userService.getCurrentUser())
       });
   }
 

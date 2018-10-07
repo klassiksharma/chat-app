@@ -24,7 +24,7 @@ import {MessagePipe, SearchPipe} from './components/pipes/search.pipe';
     BrowserModule,
     FormsModule
   ],
-  providers: [ChatServiceService, UserService],
+  providers: [ChatServiceService, UserService, MessagePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
