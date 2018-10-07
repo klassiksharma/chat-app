@@ -31,8 +31,10 @@ io.sockets.on('connection', function(socket) {
         console.log("Sending: " + data.string + " to " + data.username + " from " + data.from);
         console.log("Clients data=>", clients)
         if (clients[data.username]){
+            console.log("to => " + data.username)
             io.sockets.connected[clients[data.username].socket].emit("add-message", data);
             if(clients[data.from]){
+                console.log("from => " + data.from)
                 io.sockets.connected[clients[data.from].socket].emit("add-message", data);
             }
 

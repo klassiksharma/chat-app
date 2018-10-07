@@ -35,7 +35,7 @@
     <div class="row searchBox">
       <div class="col-sm-12 searchBox-inner">
         <div class="form-group has-feedback">
-          <input #searchInput id="searchText" type="text" class="form-control" name="searchText" placeholder="Search">
+          <input type="text" class="form-control" name="searchText" placeholder="Search" [(ngModel)]="searchText">
           <span class="glyphicon glyphicon-search form-control-feedback"></span>
         </div>
       </div>
@@ -43,7 +43,7 @@
 
     <!-- Search Box End -->
     <!-- sideBar -->
-    <div class="row sideBar" *ngFor="let item of users | search: searchInput.value">
+    <div class="row sideBar" *ngFor="let item of users | search: searchText">
       <div class="row sideBar-body" (click)="setUser(item)">
         <div class="col-sm-3 col-xs-3 sideBar-avatar">
           <div class="avatar-icon">

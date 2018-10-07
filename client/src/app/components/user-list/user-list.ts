@@ -13,6 +13,7 @@ export class UserList{
   constructor(private userService: UserService, private chatService: ChatServiceService){}
 
   users:any = ["Ajit", "Raje", "saumya", "Kush"]
+  searchText:string = ''
 
   setUser(val){
     this.userService.setCurrentUser(val);

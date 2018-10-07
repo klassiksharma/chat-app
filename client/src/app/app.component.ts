@@ -24,6 +24,7 @@ export class AppComponent {
 
   setLoggedIn(val){
     this.userService.setLoggedInUser(val);
+    //this.chatService.startConnection(val);
   }
 
 }

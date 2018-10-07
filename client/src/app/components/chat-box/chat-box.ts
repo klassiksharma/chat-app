@@ -2,6 +2,7 @@ import {Component, Input} from "@angular/core";
 import {ChatServiceService} from "../../chat-service.service";
 import * as moment from "moment"
 import {UserService} from "../../user.service";
+import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
   selector: 'chat-box',
@@ -30,9 +31,11 @@ export class ChatBox{
 
   sendMessage() {
     this.message.username = this.userService.getCurrentUser();
-    this.message.from = this.userService.loggedInUser;
-    console.log("Message to server => ", this.message)
-    this.chatService.sendMessage(this.message);
+    this.message.from = this.userService.getLoggedInUser();
+    if(this.message.string){
+      console.log("Message to server => ", this.message)
+      this.chatService.sendMessage(this.message);
+    }
     this.message.string = '';
   }
 
@@ -40,7 +43,8 @@ export class ChatBox{
     console.log("ngonoiniyt")
     this.chatService
       .getMessages()
-      /* .distinctUntilChanged()
+      .distinctUntilChanged()
+      /*.distinctUntilChanged()
        .filter((message) => message.trim().length > 0)
        .throttleTime(1000)
        .skipWhile((message) => message !== this.secretCode)
@@ -48,7 +52,7 @@ export class ChatBox{
            `${message}(${index + 1})`
          , 1)*/
       .subscribe((message:any) => {
-        console.log("Message", message);
+        console.log("Message from server", message);
         const currentTime = moment().format('hh:mm:ss a');
         //const messageWithTimestamp = `${currentTime}: ${message.string}`;
         this.messages.push({
@@ -59,6 +63,7 @@ export class ChatBox{
         });
         console.log("LoggedInUser", this.userService.getLoggedInUser(), "from", message.from);
         console.log("currentUser", this.userService.getCurrentUser(), "to=>", message.username);
+        console.log(this.messages, "Messages All")
       });
   }
 

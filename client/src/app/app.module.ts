@@ -10,14 +10,15 @@ import {UserService} from "./user.service";
 
 import {ChatBox} from "./components/chat-box/chat-box";
 import {UserList} from "./components/user-list/user-list";
-import { SearchPipe } from './components/pipes/search.pipe';
+import {MessagePipe, SearchPipe} from './components/pipes/search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChatBox,
     UserList,
-    SearchPipe
+    SearchPipe,
+    MessagePipe
   ],
   imports: [
     BrowserModule,

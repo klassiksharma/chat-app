@@ -10,3 +10,14 @@ export class SearchPipe implements PipeTransform {
   }
 
 }
+
+@Pipe({
+  name: 'msgPipe'
+})
+export class MessagePipe implements PipeTransform {
+
+  transform(value: any, from?: any, to?: any): any {
+    return value.filter(val=> val.from == from && val.to == to)
+  }
+
+}
